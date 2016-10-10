@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/item_show_info"
+        android:title="show phone info"/>
+    <item android:id="@+id/item_hide_info"
+        android:title="hide phone info"/>
+    <item android:id="@+id/item_goto_second"
+        android:title="go to second"/>
+</menu>
