@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
         int mDensity = metrics.densityDpi;
-        Log.d("maomao", "densityDpi = " + mDensity);
+        Log.d("yyw", "densityDpi = " + mDensity);
         if (mDensity == 240) {
             webSetting.setDefaultZoom(WebSettings.ZoomDensity.FAR);
         } else if (mDensity == 160) {
@@ -132,6 +132,7 @@ public class MainActivity extends AppCompatActivity {
         if (webSettings != null) {
             String web = getWebUserAgent();
             webSettings.setUserAgentString(web + ";" + userAgent);
+            Log.d("yyw","userAgent: " + webSettings.getUserAgentString().toString());
         }
     }
 
