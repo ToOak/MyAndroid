@@ -6,33 +6,70 @@
     android:orientation="vertical"
     tools:context="com.cc.xushuailong.javacalljs.MainActivity">
 
-    <WebView
-        android:id="@+id/webview"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_weight="4"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3"></WebView>
+        android:layout_height="0dp">
+        <WebView
+            android:id="@+id/webview"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"></WebView>
+        <WebView
+            android:id="@+id/webview_2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"></WebView>
+    </LinearLayout>
+
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3">
+        android:layout_weight="1">
         <TextView
             android:id="@+id/arg"
+            android:textSize="12sp"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </ScrollView>
-    <Button
-        android:id="@+id/button"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_weight="2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+        <WebView
+            android:id="@+id/webview_gif"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"></WebView>
+        <WebView
+            android:scrollbars="none"
+            android:id="@+id/webview_img"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"></WebView>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="java调用js"/>
-    <Button
-        android:id="@+id/buttonWithArg"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="java调用js传递参数"/>
+        android:layout_weight="1">
+        <Button
+            android:id="@+id/button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="java调用js"/>
+        <Button
+            android:id="@+id/buttonWithArg"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="java调用js传递参数"/>
+    </LinearLayout>
+
 </LinearLayout>
