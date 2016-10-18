@@ -11,6 +11,8 @@ import org.apache.log4j.Logger;
  */
 public class Log4jUtil {
 
+    private static final String TAG = "oak";
+
     private static final boolean isDebug = PublicControl.isDebug;
 
     private static final Logger logger = Logger.getLogger(Log4jUtil.class);
@@ -18,21 +20,21 @@ public class Log4jUtil {
     public static void d(String msg){
         if (isDebug) {
             logger.debug(msg);
-            Log.d("xsl", msg);
+            Log.d(TAG, msg);
         }
     }
 
     public static void i(String msg){
         if (isDebug) {
             logger.info(msg);
-            Log.i("xsl", msg);
+            Log.i(TAG, msg);
         }
     }
 
     public static void e(String msg){
         if (isDebug) {
             logger.error(msg);
-            Log.e("xsl", msg);
+            Log.e(TAG, msg);
         }
     }
 

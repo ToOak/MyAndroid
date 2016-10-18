@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 
@@ -22,10 +23,11 @@ public class Main2Activity extends RootActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        img = (ImageView) findViewById(R.id.iamge);
+        img = (ImageView) findViewById(R.id.image);
         seekBar = (SeekBar) findViewById(R.id.seekBar);
         mRenderScriptGaussianBlur = new RenderScriptGaussianBlur(this);
         bitmap = BitmapFactory.decodeResource(getResources(),R.mipmap.img);
+//        img.setImageBitmap(bitmap);
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -36,7 +38,10 @@ public class Main2Activity extends RootActivity {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 int radius = seekBar.getProgress();
-                if (radius <= 0) {radius = 1;} // 0 < radius <= 25
+                Log.d("oak","radius: " + radius);
+                if (radius <= 0) {
+                    radius = 1;
+                } // 0 < radius <= 25
                 img.setImageBitmap(mRenderScriptGaussianBlur.blur(radius,bitmap));
             }
         });
