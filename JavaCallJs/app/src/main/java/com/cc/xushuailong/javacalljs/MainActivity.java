@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 //        webView.getSettings().setUseWideViewPort(true);
 //        webView.getSettings().setLoadWithOverviewMode(true);
 //        webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl("file:///android_asset/html/index.html");
+        webView.loadUrl("file:///android_asset/transform.html");
         webView.addJavascriptInterface(this, "yzjk");
 
 
@@ -87,15 +87,15 @@ public class MainActivity extends AppCompatActivity {
          * 用WebView显示图片，可使用这个参数 设置网页布局类型： 1、LayoutAlgorithm.NARROW_COLUMNS ：
          * 适应内容大小 2、LayoutAlgorithm.SINGLE_COLUMN:适应屏幕，内容将自动缩放
          */
-//        webSetting.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
-        webSetting.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
+        webSetting.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
+//        webSetting.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
         webSetting.setJavaScriptEnabled(true);
 
 // User settings
 
         webSetting.setJavaScriptEnabled(true);
         webSetting.setJavaScriptCanOpenWindowsAutomatically(true);
-        webSetting.setUseWideViewPort(true);//关键点
+        webSetting.setUseWideViewPort(true);//关键点  //html中有media时，不用此设置
         webSetting.setDisplayZoomControls(false);
         webSetting.setJavaScriptEnabled(true); // 设置支持javascript脚本
         webSetting.setAllowFileAccess(true); // 允许访问文件
