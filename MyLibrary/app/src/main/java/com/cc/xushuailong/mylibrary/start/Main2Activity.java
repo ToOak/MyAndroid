@@ -12,6 +12,8 @@ import com.cc.xushuailong.mylibrary.R;
 import com.cc.xushuailong.mylibrary.base.RootActivity;
 import com.cc.xushuailong.mylibrary.utils.RenderScriptGaussianBlur;
 
+import java.util.concurrent.CopyOnWriteArrayList;
+
 public class Main2Activity extends RootActivity {
 
     private ImageView img;
