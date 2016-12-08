@@ -13,6 +13,7 @@ import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -38,6 +39,8 @@ public class MainActivity extends RootActivity implements View.OnClickListener {
     private TextView textView;
     private Button btn_bitmap;
 
+    private int xsrc, ysrc;
+
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +60,62 @@ public class MainActivity extends RootActivity implements View.OnClickListener {
         btn_selector.setOnClickListener(this);
         btn_bitmap.setOnClickListener(this);
         MainActivity.this.registerForContextMenu(btn_selector);
+
+        final int screenWidth = getResources().getDisplayMetrics().widthPixels;
+        final int screenHeight = getResources().getDisplayMetrics().heightPixels - 50;
+
+        findViewById(R.id.btn_move).setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                int action = event.getAction();
+                switch (action){
+                    case MotionEvent.ACTION_DOWN:{
+                        xsrc = (int) event.getRawX();
+                        ysrc = (int) event.getRawY();
+                        break;
+                    }
+                    case MotionEvent.ACTION_MOVE:{
+                        int x = (int) (event.getRawX() - xsrc);
+                        int y = (int) (event.getRawY() - ysrc);
+
+                        int top = v.getTop() + y;
+                        int right = v.getRight() + x;
+                        int bottom = v.getBottom() + y;
+                        int left = v.getLeft() + x;
+
+                        if (top < 0 ){
+                            top = 0;
+                            bottom = v.getHeight() + top;
+                        }
+
+                        if (right > screenWidth){
+                            right = screenWidth;
+                            left = right - v.getWidth();
+                        }
+
+                        if (bottom > screenHeight){
+                            bottom = screenHeight;
+                            top = bottom - v.getHeight();
+                        }
+
+                        if (left < 0){
+                            left = 0;
+                            right = v.getWidth() + left;
+                        }
+
+                        v.layout(left,top,right,bottom);
+
+                        xsrc = (int) event.getRawX();
+                        ysrc = (int) event.getRawY();
+                        break;
+                    }
+                    case MotionEvent.ACTION_UP:{
+                        break;
+                    }
+                }
+                return false;
+            }
+        });
     }
 
     @Override
