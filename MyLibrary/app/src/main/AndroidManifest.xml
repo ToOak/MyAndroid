@@ -30,6 +30,12 @@
         </activity>
 
         <activity android:name=".start.Main2Activity"></activity>
+        <activity android:name=".start.MatriaxActivity">
+            <intent-filter>
+                <action android:name="com.cc.xsl.MatraxActivity"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

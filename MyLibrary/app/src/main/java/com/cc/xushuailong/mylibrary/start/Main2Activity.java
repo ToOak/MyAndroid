@@ -1,10 +1,12 @@
 package com.cc.xushuailong.mylibrary.start;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 
@@ -45,6 +47,13 @@ public class Main2Activity extends RootActivity {
                     radius = 1;
                 } // 0 < radius <= 25
                 img.setImageBitmap(mRenderScriptGaussianBlur.blur(radius,bitmap));
+            }
+        });
+
+        findViewById(R.id.btn_gotoMatrix).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent("com.cc.xsl.MatraxActivity"));
             }
         });
     }
