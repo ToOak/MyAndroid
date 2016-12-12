@@ -8,6 +8,12 @@
     tools:context=".start.MainActivity">
 
     <Button
+        android:text="orientation"
+        android:id="@+id/btn_orientation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
         android:layout_gravity="center"
         android:id="@+id/btn_selector"
         android:layout_width="match_parent"

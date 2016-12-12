@@ -9,6 +9,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION"/>
 
     <application
         android:name=".MyApplication"
@@ -17,7 +18,10 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".start.MainActivity">
+            <!--android:screenOrientation="landscape"-->
+<!--自从Android 3.2（API 13），如果想阻止程序在运行时重新加载Activity，除了设置"orientation"还必须设置"ScreenSize"。-->
+        <activity android:name=".start.MainActivity"
+            android:configChanges="orientation|keyboard|keyboardHidden|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

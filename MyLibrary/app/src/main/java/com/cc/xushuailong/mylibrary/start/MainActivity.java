@@ -2,6 +2,8 @@ package com.cc.xushuailong.mylibrary.start;
 
 import android.annotation.TargetApi;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
@@ -40,6 +42,7 @@ public class MainActivity extends RootActivity implements View.OnClickListener {
     private Button btn_bitmap;
 
     private int xsrc, ysrc;
+    private Configuration cfg;
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
@@ -55,6 +58,7 @@ public class MainActivity extends RootActivity implements View.OnClickListener {
         textView = (TextView) findViewById(R.id.text);
         btn_selector = (Button) findViewById(R.id.btn_selector);
         btn_bitmap = (Button) findViewById(R.id.btn_gotobitmap);
+        cfg = getResources().getConfiguration();
     }
 
     public void viewEvents() {
@@ -64,6 +68,19 @@ public class MainActivity extends RootActivity implements View.OnClickListener {
 
         final int screenWidth = getResources().getDisplayMetrics().widthPixels;
         final int screenHeight = getResources().getDisplayMetrics().heightPixels - 50;
+
+        findViewById(R.id.btn_orientation).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (cfg.orientation == Configuration.ORIENTATION_LANDSCAPE){
+                    //                若为横屏，改为竖屏
+                    MainActivity.this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+                }else if (cfg.orientation == Configuration.ORIENTATION_PORTRAIT){
+                    //                若为竖屏，改为横屏
+                    MainActivity.this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+                }
+            }
+        });
 
         findViewById(R.id.btn_move).setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -246,4 +263,9 @@ public class MainActivity extends RootActivity implements View.OnClickListener {
 
     }
 
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        Log4jUtil.d("onConfigurationChanged");
+    }
 }
