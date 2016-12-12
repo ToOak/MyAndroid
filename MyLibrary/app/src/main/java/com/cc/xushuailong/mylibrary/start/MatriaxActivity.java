@@ -2,6 +2,7 @@ package com.cc.xushuailong.mylibrary.start;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -33,11 +34,17 @@ public class MatriaxActivity extends RootActivity {
         private float skewX = 0.5f;
         private float skewY = 0.2f;
 
-        public MatriaView(Context context) {
+        public MatriaView(final Context context) {
             super(context);
             mat = new Matrix();
             bitmap = BitmapFactory.decodeResource(context.getResources(), R.mipmap.instance);
             setFocusable(true);
+            this.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(context,SurfaceViewDrawActivity.class));
+                }
+            });
         }
 
         @Override
