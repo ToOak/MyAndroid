@@ -26,6 +26,7 @@ public class MainActivity extends Activity {
     }
 
     private void viewEvent() {
+//        webView.loadUrl("file:///android_asset/MyOfficial/index.html");
         webview.load("http://baidu.com",null);
     }
 
